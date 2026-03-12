@@ -1,5 +1,6 @@
 # Customer Churn Classification in Telecom Sector
 📌 Project Overview
+
 This project focuses on predicting customer attrition (churn) for a telecommunications company. By analyzing historical customer data, we developed a machine learning model to identify patterns that lead to churn, allowing the company to implement proactive retention strategies.
 
 🛠️ Tech Stack
