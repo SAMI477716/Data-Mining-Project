@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Customer Churn Classification Presentation</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #2b5876, #4e4376);
+  overflow: hidden;
+}
+
+#deck {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(80px);
+  transition: all 0.9s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
+  padding: 45px 60px;
+
+  width: 80vw;          /* 80% of viewport width */
+  max-width: 80%;       /* keeps it responsive */
+
+  box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+  text-align: center;
+}
+
+
+h1 {
+  font-size: 3rem;
+  color: #e0c3fc;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 2.2rem;
+  color: #fbc2eb;
+  margin-bottom: 20px;
+}
+
+p, li {
+  font-size: 1.15rem;
+  color: #eaeaea;
+  line-height: 1.6;
+}
+
+ul, ol {
+  text-align: left;
+  margin-top: 15px;
+}
+
+ul li, ol li {
+  margin-bottom: 8px;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  background: #fbc2eb;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #e0c3fc;
+}
+
+.footer {
+  position: fixed;
+  bottom: 8px;
+  right: 20px;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<div id="deck">
+
+<!-- Slide 1 -->
+<section class="slide active">
+  <div class="card">
+    <h1>Customer Churn Classification</h1>
+    <p><strong>Telecom Sector</strong></p>
+    <p style="margin-top:10px; font-size:1.2rem;">
+  Hello everyone, we are <strong>Group 2</strong>
+</p>
+
+    <p style="margin-top:20px">
+      Samuel Zewude · Misgana Adise · Abreham Tafese · Bethlehem Girma<br>
+      Selwa Jemal · Abubeker Dlgeba · Yidnekachew Birhanu
+    </p>
+    <p style="margin-top:15px">Submitted to: Mr. Abinet T. | Dec 27, 2025</p>
+  </div>
+</section>
+
+<!-- Slide 2 -->
+<section class="slide">
+  <div class="card">
+    <h2>Abstract</h2>
+    <p>
+      This project predicts customer churn in the telecom industry using machine learning.
+      We compare Logistic Regression, Decision Trees, Gradient Boosting, Random Forest, and
+      K-Nearest Neighbors using Accuracy, F1-Score, and AUC-ROC.
+    </p>
+  </div>
+</section>
+
+<!-- Slide 3 -->
+<section class="slide">
+  <div class="card">
+    <h2>Introduction</h2>
+    <ul>
+      <li>Telecom industry is highly competitive; churn leads to revenue loss.</li>
+      <li>Challenge: Identifying at-risk customers before they leave.</li>
+      <li>Objective: Predict churn and support retention strategies.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 4 -->
+<section class="slide">
+  <div class="card">
+    <h2>Objectives</h2>
+    <p><strong>General:</strong> Build an accurate churn classification model.</p>
+    <ul>
+      <li>Preprocess and explore dataset.</li>
+      <li>Implement and evaluate five ML algorithms.</li>
+      <li>Determine optimal model using Accuracy, Recall, F1-Score, and AUC-ROC.</li>
+      <li>Provide actionable insights for retention campaigns.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 5 -->
+<section class="slide">
+  <div class="card">
+    <h2>Literature Review</h2>
+    <ul>
+      <li>Logistic Regression for interpretability.</li>
+      <li>Random Forest & Gradient Boosting improve accuracy.</li>
+      <li>Advanced techniques like XGBoost are effective.</li>
+      <li>Hybrid and deep learning models enhance performance.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 6 -->
+<section class="slide">
+  <div class="card">
+    <h2>Methodology (CRISP-DM)</h2>
+    <ol>
+      <li>Business Understanding</li>
+      <li>Data Understanding</li>
+      <li>Data Preparation</li>
+      <li>Modeling</li>
+      <li>Evaluation</li>
+      <li>Deployment</li>
+    </ol>
+  </div>
+</section>
+
+<!-- Slide 7 -->
+<section class="slide">
+  <div class="card">
+    <h2>Data Understanding</h2>
+    <ul>
+      <li>Dataset: 20 features + 1 target (Churn).</li>
+      <li>Data types: Nominal, Ordinal, Numeric.</li>
+      <li>Missing values handled using median/mode/zero imputation.</li>
+      <li>Irrelevant features (customerID) removed.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 8 -->
+<section class="slide">
+  <div class="card">
+    <h2>Data Transformation</h2>
+    <ul>
+      <li>Ensured correct numerical data types.</li>
+      <li>One-Hot Encoding for categorical variables.</li>
+      <li>Final dataset contains ~31 features.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 9 -->
+<section class="slide">
+  <div class="card">
+    <h2>Classification & Algorithms</h2>
+    <ul>
+      <li>Binary classification: Churn vs No Churn.</li>
+      <li>Algorithms: Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, KNN.</li>
+      <li>Goal: Compare performance and select best model.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 10 -->
+<section class="slide">
+  <div class="card">
+    <h2>Tools & Technologies</h2>
+    <ul>
+      <li>Programming: Python</li>
+      <li>Environments: Anaconda, Google Colab, VS Code</li>
+      <li>Libraries: Pandas, NumPy, Matplotlib, scikit-learn</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 11 -->
+<section class="slide">
+  <div class="card">
+    <h2>Performance Comparison</h2>
+    <p><strong>Accuracy:</strong> Logistic Regression 80.48%, Gradient Boosting 79.99%, Random Forest 79.91%, Decision Tree 79.56%, KNN 74.80%</p>
+    <p style="margin-top:10px"><strong>Churn Recall:</strong> Logistic Regression 56%, Decision Tree 55%, Gradient Boosting 52%, KNN 50%, Random Forest 48%</p>
+  </div>
+</section>
+
+<!-- Slide 12 -->
+<section class="slide">
+  <div class="card">
+    <h2>Conclusion</h2>
+    <ul>
+      <li>CRISP-DM ensures a structured workflow.</li>
+      <li>Logistic Regression achieved best overall performance.</li>
+      <li>Model supports proactive customer retention.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 13 -->
+<section class="slide">
+  <div class="card">
+    <h1>Thank You</h1>
+    <p style="margin-top:20px; font-size:1.3rem;">
+      We appreciate your time and attention
+    </p>
+  </div>
+</section>
+
+
+</div>
+
+<div class="nav">
+  <button onclick="prevSlide()">◀ Previous</button>
+  <button onclick="nextSlide()">Next ▶</button>
+</div>
+
+<div class="footer">Use ← → keys</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(i) {
+  slides.forEach(s => s.classList.remove("active"));
+  slides[i].classList.add("active");
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+function prevSlide() {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") nextSlide();
+  if (e.key === "ArrowLeft") prevSlide();
+});
+</script>
+
+</body>
+</html>
